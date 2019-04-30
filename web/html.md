@@ -1,15 +1,12 @@
 # html
-## meta
-### 作用
->描述网页信息和设置
->falkfja ;
-fafajd;lf 
-fadlfkda; 
 
+## 概览
 
->2. 组成：共有两个属性：http-equiv 和 name。 http-equiv设置http。name 描述网页信息,对应的content中的具体描述信息。
->3. name 属性：  
-   >>keywords:
-  
+## 标签
+>作用：描述网页和设置http请求。 
 
+>组成：http-equvi 和name + content。分别用于设置http请求和描述网页。
 
+>name 属性
+>1. fsdfsa
+## API
