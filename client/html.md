@@ -1,49 +1,260 @@
 # HTML
-
-本文是一篇HTML入门的笔记。
-
-HTML是一种相当简单的、由不同元素组成的标记语言，用于构建网页的结构层。
-
-本文一共有四个部分组成:
-* HTML介绍, 主要介绍MTML基础语法和常用标签。
+本文是一篇HTML入门的笔记，一共有四个部分组成:
+* HTML语法和元素, 主要介绍MTML基础语法和常用标签。
 * 多媒体和嵌入， 主要介绍多媒体资源的引入和使用。
 * HTML表格， 主要介绍HTML表格的高级使用。
 * HTML表单，主要介绍HTML表单的高级使用。
 
-## HTML介绍
-该部分主要介绍HTML的基本概念和语法。
+*************************************************************
 
-HTML的内容主要包括标签和一些语法。
+## HTML元素
+本模块主要讲述HTML语法和元素的基础知识，包括以下小节：
+* 元素
+* 文档结构话元素
+* 基本文字处理元素
+* 高级文字排版元素
+* 文档和网页架构
+*************************************************************
 
-该模块包含以下六章的内容:   
-* html入门    
-* head标签以及包含的资源
-* HTML文字处理基础
-* 超链接
-* 高级文本排版
-* 文档和网站结构
+### 元素  
+元素组成：由标签(tag)、属性（attribute)、内容（content）组成。    
+元素分类：
+* 块级元素：出现在新的一行，用于展现结构化内容，比如段落，列表，导航菜单，页脚等。
+* 内联元素：用于包裹文字。        
+实体化字符：`<` ==> `&lt`; `> ==> &gt;`; `" ==> &quot;`; `' ==> &apos;`; `& ==> &amp;`。
 
-### HTML入门
-本文将从 HTML 最基础的部分讲起，对元素（Element）、属性（Attribute）以及可能涉及的一些重要术语进行介绍，并明确它们在语言中所处的位置。本文还会讲解 HTML 元素和页面的组织方式，以及其他一些重要的基本语言特性。学习的过程中，我们会使用 HTML 做一些好玩的事情。
+*************************************************************
 
-* 定义   
+### 文档结构化元素
+ `<!DOCTYPE html>`：声明文档类型，在现代WEB中没有实际作用。    
+ `<html></html>`：包含了整个页面的内容， 被称为根元素。        
+`<head></head>`：包含一些页面设置和资源，比如面向搜索引擎的搜索关键字， 页面描述， 字符编码，样式表资源，内部包含`<title></title> <meta> <link>`等标签。 
 
-HTML (HyperText Markup Language) 不是一门编程语言，而是一种用来告知浏览器如何组织页面的标记语言。HTML 可复杂、可简单，一切取决于开发者。它由一系列的元素（elements）组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。 一对标签（ tags）可以为一段文字或者一张图片添加超链接，将文字设置为斜体，改变字号，等等。
+`<meta>`：提供元数据(metadata), 用于描述和设置html document。组成：http-equiv => 主要用于描述http信息。name => 主要设置文档信息。     
+name属性：    
+* 作用：主要用于描述网页。    
+* keywords: 告诉搜索引擎网页的关键字。   
+* description: 网站描述。
+* viewport: 移动端的窗口。content 的值为：width=deivce-width;initial-scale=1     
 
-HTML 标签不区分大小写。也就是说，输入标签时既可以使用大写字母也可以使用小写字母。
+http-equiv属性:  
+* 作用：主要用于设置http。  
+* content-type: 设置网页字符集。content=“text/html;charset=utf-8”;H5推荐使用 charset="utf-8"。
+* X-UA-Compatible: 设置浏览器版本，默认最新版本,比如chrome=1; 常规配置为content = "IE=edge"。
+* cache-control: 缓存控制，值为：no-cache=>发送请求，若资源未更改则使用缓存; no-store=>禁用缓存;maxage:=>设置缓存生命时长，为0则等价于禁用缓存。
+
+`<title></title>`：作用：设置页面的标题，浏览器收藏网页的描述性文字。    
+`<body></body>`：向用户展示的内容
+
+*************************************************************
+
+### 基本文字处理
+标题：h1 ~ h6， 一共六级标题，h1为主标题，在文档中允许初选一次。章h1  节 h2  段 h3
+        
+图像：   
+* `<img src="图片的地址" alt="图片的描述性文字"`        
+* src：图片的地址。    
+* alt: 图片未正常加载时显示给用户的解释性文字。
+
+标记文本：  
+* 标题(Heading): 共有六级标题 h1 ~ h6    
+* 段落(Paragraph):指定段落    
+* 列表    
+    * 无序列表(Unlodered List)：`<ul></ul>`
+    * 有序列表(Ordered List)：`<ol></ol>`
+    * 列表元素 `<li></li>`
+
+链接：`<a></a>`(Anchor)(锚) ，属性有： 
+* href (hypertext reference) (超文本引用): 链接的地址，需要加`http(s)://`,也可以链接到相同文档的文档片段。    
+* download:  文件下载名，设置该属性用于下载网络文件。用于发送邮件：href="mailto:example@qq.com"。
+* target: 设置新链接打开的位置, _blank设置为在新的窗口打开链接。
+
+强调:
+* em: 斜体文本;    
+* strong: 字体加黑加粗。    
+* u：下划线。
+
+*************************************************************
+
+### 高阶文字排版
+描述列表：dl(description list, 列表容器), dt( description term,描述术语 )， dd( description description， 描述内容)。    
+缩略语：abbr，设置title属性用于对缩略语进行解释。   
+标记联系方式：address，标记联系方式。    
+上标和下标：sup（上标 ）;sub(下标)。    
+标记时间：time，设置时间显示方式, datetime属性中放入正确的时间格式。
+
+*************************************************************
+
+### 文档与网页架构
+
+图示:
+<img src="../images/snapshot.png">
+
+结构:    
+* 标题栏：横跨整个页面顶部的大标题，通常存在于所有网页。    
+* 导航栏：指向网站各个区段的超链接，导航栏通常在所有网页中保持一致，可以单独成行，也可以放在标题栏中。    
+* 主内容：中心大部分区域是网站的独有内容，比如视频，文章，地图，新闻等。    
+* 侧边栏：外围信息，比如引用，广告，辅助导航系统等。    
+* 页脚：横跨页面底部的区域，放置公共信息，一般使用较小字体，且为次要内容。   
+
+结构化语义元素:    
+header:  用于标题栏,内容常用h1元素。     
+nav: 导航栏。 内容多为被列表元素包括的链接元素和用于搜索的表单元素。    
+main: 主内容， 内部通常分各类区段，如article,section ,div 等元素。    
+aside: 侧边栏， 通常放置在main元素中。    
+footer: 页脚,通常为小字体的次要内容。    
+
+代码示例:
+
+        
+        <!DOCTYPE html>
+        <meta charset="utf-8">
+        <title>My page title</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="style.css">
+        </head>
+        <html>
+        <head>
+        <body>
+            <!-- Here is our main header that is used across all the pages of our website -->
+            <header>
+            <h1>Header</h1>
+            </header>
+            <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our team</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>`
+
+            <!-- A Search form is another commmon non-linear way to navigate through a website. -->
+
+            <form>
+                <input type="search" name="q" placeholder="Search query">
+                <input type="submit" value="Go!">
+            </form>
+            </nav>
+
+            <!-- Here is our page's main content -->
+            <main>
+
+            <!-- It contains an article -->
+            <article>
+                <h2>Article heading</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Donec a diam lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam viverra nec consectetur ant hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.</p>
+
+                <h3>Subsection</h3>
+
+                <p>Donec ut librero sed accu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor.</p>
+
+                <p>Pelientesque auctor nisi id magna consequat sagittis. Curabitur dapibus, enim sit amet elit pharetra tincidunt feugiat nist imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros.</p>
+
+                <h3>Another subsection</h3>
+
+                <p>Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum soclis natoque penatibus et manis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.</p>
+
+                <p>Vivamus fermentum semper porta. Nunc diam velit, adipscing ut tristique vitae sagittis vel odio. Maecenas convallis ullamcorper ultricied. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, is fringille sem nunc vet mi.</p>
+            </article>
+
+            <!-- the aside content can also be nested within the main content -->
+            <aside>
+                <h2>Related</h2>
+
+                <ul>
+                <li><a href="#">Oh I do like to be beside the seaside</a></li>
+                <li><a href="#">Oh I do like to be beside the sea</a></li>
+                <li><a href="#">Although in the North of England</a></li>
+                <li><a href="#">It never stops raining</a></li>
+                <li><a href="#">Oh well...</a></li>
+                </ul>
+            </aside>
+
+            </main>
+
+            <!-- And here is our main footer that is used across all the pages of our website -->
+
+            <footer>
+            <p>©Copyright 2050 by nobody. All rights reversed.</p>
+            </footer>
+
+        </body>
+        </html>
+
+*************************************************************
 
 ## 多媒体和嵌入 
-该模块主要探讨怎样处理视频，音频，图片等多媒体，甚至处理整个其他的网页。
+网页内容主要由文字和多媒体资源组成，基础内容主要介绍网页结构和文字排版元素，本章节主要介绍多媒体元素，多媒体资源包括图片、视频、音频、矢量图、其他网页等，该类型元素又被称为替换元素，因为它们的内容和尺寸有外部资源所定义。
 
-多媒体资源主要包括视频音频等资源。
-
-该包括以下五部分的内容：
+本章主要包括以下四小节：
 * 图片
-* 视频和音频内容
+* 视频和音频
 * 嵌入技术
-* 在页面添加矢量图
-* 响应式图片
+* 矢量图
 
+*************************************************************
+
+### 图片
+
+元素：img，   
+属性：
+* src: source, 多媒体资源的路径。
+* alt: 用于图片无法显示时的替代内容。
+* width/height: 用于设置图片容器的大小， 不推荐使用。
+* title：用于鼠标悬浮时的解释性文字。 
+
+提示性工具：`<figure>  <img> <figcaption>说明性文字</figcaption> </figure>`。    
+背景图片：css设置， background-image: url("")。
+响应时图片：略。
+
+*************************************************************
+
+### 音频和视频
+
+video元素用于控制视频播放，属性有：
+* src：source, 多媒体资源的地址。
+* controls:布尔属性， 用于向用户开放控制视频播放的按钮，可在js中的API中进行控制。建议加上。
+* width/height: 设置播放器的宽度和高度。
+* autoplay:布尔属性， 自动播放，不建议设置。
+* loop: 布尔属性，自动循环播放，不建议使用。
+* muted: 布尔熟悉，播放视频时默认关闭声音。
+* poster: 属性值为图片的地址，用于覆盖视频。
+* preload: 视频缓存控制。 none -- 不缓存；auto -- 页面加载完成后缓存; metadata -- 仅缓存元数据。
+
+audio元素用于控制音频播放，属性和用法同于video。但是没有width/height 和poster视觉属性。
+
+播放格式兼容性处理：    
+`<video controls>`    
+    `<source src="video.mp4" type="video/mp4">`    
+    `<source src="video.webm" type="video/webm">`    
+`<p>您的播放器无法播放该媒体资源</p>`    
+`</video>`    
+视频和音频都适用。
+
+字幕（适用于视频和音频）: 暂时不使用。
+
+*************************************************************
+
+### 嵌入技术
+历史: frame/framset、object、embed --> iframe、canvas、video、autio    
+iframe属性:    
+* allowfullscreen: 布尔属性，允许通过JS设置全屏模式。
+* src: 多媒体资源。
+* sandbox: 可以为布尔属性，此时为默认设置，用于隔离框架可父页面的信息交流，提高安全性。
+
+处理安全隐患：   
+* 设置sandbox属性
+* 使用https服务
+* 配置CSP指令
+***************************************************************
+### 矢量图
+
+图片的分类：
+* 位图： 由像素点构成，比如*.bmp, *.png, *.jpg, *.gif等，放大时会失真。
+* 矢量图: *.svg文件，通过算法获得,不会造成失真。
+
+***************************************************************
 ## HTML表格
 该模块主要介绍HTML表格的高级使用。
 
@@ -72,104 +283,6 @@ HTML表格主要用于向用于展示数据。
 
 
 
-
-<!-- 
-主要是基础部分，认识元素的组成，知道它们在文档中的作用。
-
-### 定义 
-
-(HyperText Markup Language)，HTML是一门由不同元素组成的标记语言，用于定义一个网页的结构。
-
-### 元素分类    
-块级元素和内联元素。
-* 块级元素：出现在新的一行，用于展现结构化内容，比如段落，列表，导航菜单，页脚等。
-* 内联元素：用于包裹文字。
-
-### 元素组成
-  由标签(tag)、属性（attribute)、内容（content）组成。
-
-### 字符
- `<` ==> `&lt`; `> ==> &gt;`; `" ==> &quot;`; `' ==> &apos;`; `& ==> &amp;`。
-### 元素（`element`) 
-由开始标签(`<tag>`)内容和结束标签(`</tag>`)组成,并且具有自己的属性(*attribute*)。
-
-### 常用元素
-* html: 包裹整个完整的页面，是根元素。
-* head: 容器元素，包含对整个页面的设置。
-* meta：承载页面的设置信息。
-* title: 设置页面的标题,浏览器收藏页面时用于描述页面。
-* body: 包含了所有向用户展示的内容。
-
-### H5新增标签
-* 区块标签：
-    * header: 定义标题栏。
-    * nav: 定义导航栏。
-    * main:  定义主要内容。
-    * article: 定义文章。
-    * section: 定义文章区块。
-    * aside: 定义侧边栏。
-    * footer:　定义文章底栏。
-
-* 表单增强：
-    * 日期，时间，搜索，邮箱，数字等
-    * 表单验证
-    * 自动聚焦
-
-### 文档结构
-* `<!DOCTYPE html>`    
-声明文档类型，在现代WEB中没有实际作用
-
-* `<html></html>`    
-包含了整个页面的内容， 被称为根元素。
-
-* `<head></head>`     
-包含一些页面设置和资源，比如面向搜索引擎的搜索关键字， 页面描述， 字符编码，样式表资源，内部包含
-`<title></title> <meta> <link>`等标签。
-* `<meta>`   
-    作用：提供元数据(metadata), 用于描述和设置html document。  
-    组成：http-equiv => 主要用于描述http信息。name => 主要设置文档信息。     
-    name属性：    
-    * 作用：主要用于描述网页。    
-    * keywords: 告诉搜索引擎网页的关键字。   
-    * description: 网站描述。
-    * viewport: 移动端的窗口。content 的值为：width=deivce-width;initial-scale=1     
-
-    http-equiv属性:  
-    * 作用：主要用于设置http。  
-    * content-type: 设置网页字符集。content=“text/html;charset=utf-8”;H5推荐使用 charset="utf-8"。
-    * X-UA-Compatible: 设置浏览器版本，默认最新版本,比如chrome=1; 常规配置为content = "IE=edge"。
-    * cache-control: 缓存控制，值为：no-cache=>发送请求，若资源未更改则使用缓存; no-store=>禁用缓存;maxage:=>设置缓存生命时长，为0则等价于禁用缓存。
-
-* `<title></title>`    
-作用：设置页面的标题，浏览器收藏网页的描述性文字。
-
-* `<body></body>`    
-向用户展示的内容
-
-### 基本文字处理
-* 标题      
-h1 ~ h6， 一共六级标题，h1为主标题，在文档中允许初选一次。
-章h1  节 h2  段 h3
-    
-* 图像    
-`<img src="图片的地址" alt="图片的描述性文字"`        
-src：图片的地址。    
-alt: 图片未正常加载时显示给用户的解释性文字。
-* 标记文本    
-标题(Heading): 共有六级标题 h1 ~ h6    
-段落(Paragraph):指定段落    
-列表
-    * 无序列表(Unlodered List)：`<ul></ul>`
-    * 有序列表(Ordered List)：`<ol></ol>`
-    * 列表元素 `<li></li>`
-* 链接
-`<a></a>`  
-元素: (Anchor)(锚)  
-href (hypertext reference) (超文本引用): 链接的地址，需要加`http(s)://`    
-也可以链接到相同文档的文档片段。    
-download:  文件下载名，设置该属性用于下载网络文件。
-用于发送邮件：href="mailto:example@qq.com"。
-### 高阶文字排版 -->
 
 <!-- 
     文档结构：
